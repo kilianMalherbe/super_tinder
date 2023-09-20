@@ -1,0 +1,29 @@
+.swipeButtons {
+  position: fixed;
+  left: 50%;
+  bottom: 10vh;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.swipeButtons_repeat {
+  color: blue !important;
+}
+
+.swipeButtons_left {
+  color: brown !important;
+}
+
+.swipeButtons_star {
+  color: rgb(199, 199, 0) !important;
+}
+
+.swipeButtons_right {
+  color: red !important;
+}
+
+.swipeButtons_lightning {
+  color: gold !important;
+}

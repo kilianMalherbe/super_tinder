@@ -19,7 +19,7 @@ export default function Inscription() {
       setError(false);
 
       const res = await fetch("http://localhost:8001/tinder/users/create", {
-        method: "POST",
+        methods: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });

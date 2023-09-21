@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Profil() {
   const [formData, setFormData] = useState({});
@@ -30,7 +30,7 @@ export default function Profil() {
       const res = await fetch(
         `http://localhost:8001/tinder/users/update/${id}`,
         {
-          method: "POST",
+          methods: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }
@@ -44,7 +44,7 @@ export default function Profil() {
       const resAfterUpdate = await fetch(
         `http://localhost:8001/tinder/users/${id}`,
         {
-          method: "POST",
+          methods: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }

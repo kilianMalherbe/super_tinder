@@ -1,7 +1,7 @@
 import TinderCards from "react-tinder-card";
-import "../style/TinderCard.css";
 import { useEffect, useState } from "react";
 import axios from "../axios";
+import "../style/TinderCard.css";
 
 export default function TinderCard() {
   const [people, setPeople] = useState([]);
@@ -29,7 +29,7 @@ export default function TinderCard() {
       {people.map((person) => (
         <TinderCards
           className="swipe"
-          key={person.name}
+          key={person._id}
           preventSwipe={["up", "down"]}
           onSwipe={(dir) => swiped(dir, person.name)}
           onCardLeftScreen={() => outOfFrame(person.name)}

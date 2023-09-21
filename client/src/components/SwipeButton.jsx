@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/SwipeButton.css";
 import {
   ArrowPathIcon,
   BoltIcon,
@@ -7,6 +6,7 @@ import {
   StarIcon,
   XCircleIcon,
 } from "@heroicons/react/24/solid";
+import "../style/SwipeButton.css";
 
 function SwipeButton() {
   return (

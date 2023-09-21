@@ -4,6 +4,12 @@
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
   ],
-  theme: { extend: {} },
+  theme: {
+    extend: {
+      fontFamily: {
+        poppins: ["Manrope", "sans-serif"],
+      },
+    },
+  },
   plugins: [require("flowbite/plugin")],
 };

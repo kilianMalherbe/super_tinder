@@ -29,16 +29,16 @@ app.get("/", (req, res) =>
   res.status(200).send("Hey your port is working fine :)")
 );
 
-app.post("/tinder/cards/create", (req, res) => {
+app.post("/tinder/cards/create", (req, res, next) => {
   try {
     const cards = new Cards({
       name: req.body.name,
       url: req.body.url,
     });
     cards.save();
-    console.log(cards);
+    res.status(200).json({ message: "Carte créée" });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 });
 app.get("/tinder/cards", async (req, res) => {
@@ -52,36 +52,72 @@ app.get("/tinder/cards", async (req, res) => {
   }
 });
 
-app.post("/tinder/users/create", (req, res) => {
+app.post("/tinder/users/create", (req, res, next) => {
   try {
     const users = new Users({
       name: req.body.name,
+      avatar: req.body.avatar,
       email: req.body.email,
       password: req.body.password,
       age: req.body.age,
       city: req.body.city,
     });
+
     users.save();
-    console.log(users);
+    res.status(200).json({ message: "Utilisateur créé" });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 });
-app.post("/tinder/users", async (req, res) => {
-  const { email, password } = req.body;
 
+app.post("/tinder/users/update/:id", async (req, res, next) => {
   try {
-    const user = await Users.findOne({ email });
-    if (!user) return console.log("utilisateur non trouvé");
+    const update = {
+      avatar: req.body.avatar,
+      email: req.body.email,
+      password: req.body.password,
+      age: req.body.age,
+      city: req.body.city,
+    };
 
-    const validPassword = await Users.findOne({ password });
-    if (!validPassword) return console.log("Mot de passe incorrect");
+    await Users.findOneAndUpdate({ _id: req.params.id }, update);
+
+    res.status(200).json({ message: "Utilisateur modifié" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/tinder/users/:id", async (req, res, next) => {
+  try {
+    const user = await Users.findOne({ _id: req.params.id });
+    if (!user) return next();
 
     const { ...rest } = user._doc;
 
     res.status(200).json(rest);
   } catch (err) {
-    console.log(err);
+    res.status(500);
+    next(err);
+  }
+});
+
+app.post("/tinder/users", async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await Users.findOne({ email });
+    if (!user) return next();
+
+    const validPassword = await Users.findOne({ password });
+    if (!validPassword) return next();
+
+    const { ...rest } = user._doc;
+
+    res.status(200).json(rest);
+  } catch (err) {
+    res.status(500);
+    next(err);
   }
 });
 

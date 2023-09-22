@@ -30,7 +30,7 @@ export default function Profil() {
       const res = await fetch(
         `http://localhost:8001/tinder/users/update/${id}`,
         {
-          methods: "POST",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }
@@ -44,7 +44,7 @@ export default function Profil() {
       const resAfterUpdate = await fetch(
         `http://localhost:8001/tinder/users/${id}`,
         {
-          methods: "POST",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }

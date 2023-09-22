@@ -1,5 +1,4 @@
-<img src="https://kilianmalherbe.github.io/super_tinder/client/public/tinderLogo.png" width="60px">
-<br><br>
+<img src="https://kilianmalherbe.github.io/super_tinder/client/public/tinderLogo.png" width="100px">
 
 # Super Tinder
 

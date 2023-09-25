@@ -11,7 +11,7 @@ Super Tinder est un projet fictif permettant à des personnes de rencontrer leur
   - React
   - Vite
   - Express / Axios
-  - TailWind
+  - Tailwind css
 
 - **Backend** :
   - Nodemon
